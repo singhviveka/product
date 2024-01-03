@@ -58,3 +58,9 @@ async def create_product(product: Product):
 async def list_products():
     products = list(product_collection.find())
     return {"products": products}
+
+
+@app.get("/product_details")
+async def list_products(name: str):
+    product = product_collection.find({"name": name})
+    return {"product_details": product}
